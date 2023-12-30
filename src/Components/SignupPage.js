@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBCard, MDBCardBody, MDBInput, MDBRow, MDBContainer } from 'mdb-react-ui-kit';
+import {  MDBCard, MDBCardBody, MDBInput, MDBContainer } from 'mdb-react-ui-kit';
 import axios from 'axios';
 
 function SignupPage({ setShowLoginPage }) {
@@ -72,7 +72,7 @@ function SignupPage({ setShowLoginPage }) {
 
   const handlesignup = () => {
     if (validateForm()) {
-      axios.post('http://localhost:4000/auth/register', login).then((res) => {
+      axios.post('http://localhost:4000/auth/register',login).then((res) => {
         if (res.data.signUp) {
           alert('Sign up successfully');
           setShowLoginPage('login');
@@ -144,7 +144,7 @@ function SignupPage({ setShowLoginPage }) {
               {errors.ConfirmPassword && <span className="text-danger">{errors.ConfirmPassword}</span>}
               <button className='w-50 btn btn-dark' onClick={handlesignup} style={{ marginLeft: '10px' }}>Sign Up</button>
               <div>
-                <p className="mb-0">Have an account? <a href="#!" className="text-white-50 fw-bold" onClick={() => setShowLoginPage('login')} style={{ color: "blue" }}>Log in</a></p>
+                <p className="mb-0">Have an account? <a href="#" className="text-white-50 fw-bold" onClick={() => setShowLoginPage('login')} style={{ color: "blue" }}>Log in</a></p>
               </div>
             </MDBCardBody>
           </MDBCard>

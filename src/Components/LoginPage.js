@@ -11,6 +11,9 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { setuser } from '../Toolkit/userSlice';
+import { useDispatch } from 'react-redux';
+
 
 
 
@@ -23,6 +26,8 @@ function LoginPage({ setShowLoginPage }) {
   const [message, setMessage] = useState(''); // State to store messages
   const [showPassword, setShowPassword] = useState(false); // State to control password visibility
   const navigate = useNavigate();
+
+  const dispatch=useDispatch()
 
   const handleLogin = () => {
     // Client-side validation
@@ -41,6 +46,7 @@ function LoginPage({ setShowLoginPage }) {
       axios.post('http://localhost:4000/auth/login', login).then((response) => {
         if (response.data.login) {
           localStorage.setItem('token', response?.data?.token);
+          dispatch(setuser(response?.data?.user))
           navigate('/home');
         } else {
           alert('Login failed');
@@ -73,7 +79,7 @@ function LoginPage({ setShowLoginPage }) {
                 label='Email'
                 id='form3'
                 type='email'
-                onChange={(e) => setlogin({ ...login, email: e.target.value })}
+                onChange={(e) => setlogin({...login, email: e.target.value })}
               />
               <MDBInput
                 wrapperClass='mb-4 mx-5 w-100'
@@ -90,9 +96,9 @@ function LoginPage({ setShowLoginPage }) {
                 {showPassword ? 'Hide Password' : 'Show Password'}
               </button>
 
-              <button className='w-50 btn btn-dark' onClick={handleLogin} style={{ marginLeft: '10px' }}>LOGIN</button>
+              <button className='w-50 btn btn-dark' onClick ={handleLogin} style={{ marginLeft: '10px' }}>LOGIN</button>
               <div>
-                <p className="mb-0">Don't have an account? <a href="" className="text-white-50 fw-bold" onClick={() => setShowLoginPage("signup")} style={{ color: "blue" }}>Sign Up</a></p>
+                <p className="mb-0">Don't have an account? <a href="#" className="text-white-50 fw-bold" onClick={() => setShowLoginPage("signup")} style={{ color: "blue" }}>Sign Up</a></p>
               </div>
             </MDBCardBody>
           </MDBCard>

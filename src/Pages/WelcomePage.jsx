@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import {
-  MDBBtn,
+  
   MDBContainer,
-  MDBCard,
-  MDBCardBody,
-  MDBIcon,
-  MDBInput
+  
 } from 'mdb-react-ui-kit';
 
 import '../Styles/WelcomePage.css';
