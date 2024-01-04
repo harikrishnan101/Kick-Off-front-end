@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPage from "./Components/LoginPage";
 import Home from "./Pages/Home";
 import CourtReg from "./Pages/CourtReg";
+import MyCourts from "./Pages/MyCourts";
+import SingleCourtPage from "./Pages/SingleCourtPage";
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
 <Route path="/" element={<WelcomePage/>}/>
 <Route path="/home" element={<Home/>}/>
 <Route path="/CourtRegistration" element={<CourtReg/>}/>
-
+<Route path="/MyCourts" element={<MyCourts/>}/>
+<Route path="/openCourtEdit/:id" element={<SingleCourtPage/>}/>
 
 
 

@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 function Navbarmain() {
   const navigate=useNavigate()
   const { user } = useSelector((state) => state.user);
-  // console.log(user);
+  console.log(user,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
   const logout=()=>{
     localStorage.clear('token')
     navigate('/')

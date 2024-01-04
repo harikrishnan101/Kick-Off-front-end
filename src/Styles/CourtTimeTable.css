@@ -1,0 +1,57 @@
+.cus-dropdown {
+    position: relative;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    background-color: #fff;
+  }
+  
+  .cus-options {
+    position: absolute;
+    background-color: #333;
+    width: 80%;
+    top: 300px;
+    left: 50px;
+    min-height: 180px;
+    z-index: 4;
+    overflow: auto;
+    max-height: 10%;
+
+  }
+  
+  .cus-options li {
+    list-style: none;
+    border-bottom: 1px solid #555;
+    padding: 5px;
+    color: #fff;
+  }
+  
+  .cus-options li:last-child {
+    border-bottom: none;
+  }
+  
+  .add-court-timing-modal {
+    width: 500px;
+    min-height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  }
+  
+
+  /* styles.css */
+/* Modify the label styles */
+label {
+  font-weight: bold;
+  color: #336699; /* Change the color to your desired color */
+}
+
+/* Modify the input styles */
+input[type='date'],
+input[type='number'] {
+  border: 1px solid #ccc; /* Add a border */
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f0f0f0; /* Change the background color */
+}

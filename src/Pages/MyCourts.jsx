@@ -1,27 +1,20 @@
 import React from 'react'
-import NavbarMain from './NavbarMain'
-import Cards from '../Components/Cards'
+import Navbarmain from './NavbarMain'
+import MyCourtComponents from '../Components/MyCourtComponents'
 
-function Home() {
+
+function MyCourts() {
   return (
-    
     <>
     <div>
-        <NavbarMain/>
+        <Navbarmain/>
 
         <div className='container mt-4 '>
         <div className='row d-flex justify-content-center  gap-4'>
 
+        <MyCourtComponents/>
         
         
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
         
           
          
@@ -34,4 +27,6 @@ function Home() {
   )
 }
 
-export default Home
+export default MyCourts
+
+

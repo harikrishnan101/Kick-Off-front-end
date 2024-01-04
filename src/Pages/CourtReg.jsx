@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { Container, Card, Form, Button, Col } from 'react-bootstrap';
 import Navbarmain from './NavbarMain';
 import axios from 'axios';
+import AxiosInstance from '../Configure/AxiosInstance';
+import { useNavigate } from 'react-router-dom';
 
 function CourtReg() {
   const initialFormData = {
     name: '',
     location: '',
     cost: 0,
+    userId:''
   };
 
   const [registerData, setRegisterData] = useState(initialFormData);
   const [courtpic, setCourtpic] = useState();
   const [formErrors, setFormErrors] = useState({});
+  const navigate=useNavigate()
 
   const imageUpload = (e) => {
     console.log(e.target.files[0]);
@@ -53,14 +57,14 @@ function CourtReg() {
 
       // Show success alert
       alert('Success');
+      navigate('/MyCourts')
     }
     let fileData = new FormData()
     fileData.append('image', courtpic.file)
 
-    axios.post('http://localhost:4000/users/CourtRegister', fileData, { params: registerData , Headers: {
+    AxiosInstance.post('/users/CourtRegister', fileData, { params: registerData } , {headers: {
       'content-type': 'multiple/form-data',
-    },
-  }).then((res) => {
+    }}).then((res) => {
           alert(res.data.message);
         })
         .catch((res) => {
