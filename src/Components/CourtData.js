@@ -4,15 +4,7 @@ import { BASEURL } from '../Constant/baseUrl';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 function CourtData({data}) {
-  // const [showModal, setShowModal] = useState(false);
-
-  // const handleModalOpen = () => {
-  //   setShowModal(true);
-  // };
-
-  // const handleModalClose = () => {
-  //   setShowModal(false);
-  // };
+ 
   const navigate=useNavigate()
   const openCourt=() => {
     navigate(`/openCourtEdit/${data._id}`);

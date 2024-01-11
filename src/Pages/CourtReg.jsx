@@ -4,31 +4,58 @@ import Navbarmain from './NavbarMain';
 import axios from 'axios';
 import AxiosInstance from '../Configure/AxiosInstance';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 
 function CourtReg() {
   const initialFormData = {
     name: '',
     location: '',
     cost: 0,
-    userId:''
+    userId: '',
   };
 
   const [registerData, setRegisterData] = useState(initialFormData);
   const [courtpic, setCourtpic] = useState();
   const [formErrors, setFormErrors] = useState({});
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const imageUpload = (e) => {
     console.log(e.target.files[0]);
     setCourtpic({ file: e.target.files[0] });
   };
 
+  const validateField = (fieldName, value) => {
+    let errorMessage = '';
 
+    switch (fieldName) {
+      case 'name':
+        // Alphanumeric and space validation
+        errorMessage = /^[A-Za-z\s]+$/.test(value) ? '' : 'Invalid Court Name';
+        break;
+      case 'location':
+        // Alphanumeric and space validation
+        errorMessage = /^[A-Za-z\s]+$/.test(value) ? '' : 'Invalid Location';
+        break;
+      case 'cost':
+        // Numeric validation
+        errorMessage = /^\d+$/.test(value) ? '' : 'Invalid Cost';
+        break;
+      default:
+        break;
+    }
 
+    setFormErrors({ ...formErrors, [fieldName]: errorMessage });
+  };
+
+  const handleChange = (fieldName, value) => {
+    setRegisterData({ ...registerData, [fieldName]: value });
+    validateField(fieldName, value);
+  };
 
   const handleRegister = () => {
     const errors = {};
 
+    // Required field validation
     if (!registerData.name) {
       errors.name = 'Court name is required';
     }
@@ -39,10 +66,6 @@ function CourtReg() {
 
     if (registerData.cost <= 0) {
       errors.cost = 'Charge must be greater than 0';
-    }
-
-    if (!registerData.about) {
-      errors.about = 'About your court is required';
     }
 
     setFormErrors(errors);
@@ -57,25 +80,33 @@ function CourtReg() {
 
       // Show success alert
       alert('Success');
-      navigate('/MyCourts')
-    }
-    let fileData = new FormData()
-    fileData.append('image', courtpic.file)
+      navigate('/MyCourts');
 
-    AxiosInstance.post('/users/CourtRegister', fileData, { params: registerData } , {headers: {
-      'content-type': 'multiple/form-data',
-    }}).then((res) => {
-          alert(res.data.message);
+      // Image upload logic
+      if (courtpic) {
+        let fileData = new FormData();
+        fileData.append('image', courtpic.file);
+
+        AxiosInstance.post('/users/CourtRegister', fileData, { params: registerData }, {
+          headers: {
+            'content-type': 'multiple/form-data',
+          },
         })
-        .catch((res) => {
-          alert(res.data.message);
-        });
-    
+          .then((res) => {
+            alert(res.data.message);
+          })
+          .catch((res) => {
+            alert(res.data.message);
+          });
+      }
+    }
   };
 
   return (
     <>
-      <div><Navbarmain /></div>
+      <div>
+        <Navbarmain />
+      </div>
       <Container className='d-flex justify-content-center'>
         <Card className='mt-4'>
           <Col md={12}>
@@ -84,6 +115,9 @@ function CourtReg() {
                 <b>Register Your Court</b>
               </h4>
               <Form>
+                {/* ... Your existing Form.Group components ... */}
+
+                {/* Court Name */}
                 <Form.Group className='mb-4 mt-2'>
                   <Form.Label>Court Name</Form.Label>
                   <Form.Control
@@ -91,9 +125,7 @@ function CourtReg() {
                     size='ml'
                     type='text'
                     value={registerData.name}
-                    onChange={(e) =>
-                      setRegisterData({ ...registerData, name: e.target.value })
-                    }
+                    onChange={(e) => handleChange('name', e.target.value)}
                     className='border-dark'
                   />
                   {formErrors.name && (
@@ -101,6 +133,7 @@ function CourtReg() {
                   )}
                 </Form.Group>
 
+                {/* Location */}
                 <Form.Group className='mb-4 mt-2'>
                   <Form.Label>Location</Form.Label>
                   <Form.Control
@@ -108,9 +141,7 @@ function CourtReg() {
                     size='ml'
                     type='text'
                     value={registerData.location}
-                    onChange={(e) =>
-                      setRegisterData({ ...registerData, location: e.target.value })
-                    }
+                    onChange={(e) => handleChange('location', e.target.value)}
                     className='border-dark'
                   />
                   {formErrors.location && (
@@ -118,6 +149,7 @@ function CourtReg() {
                   )}
                 </Form.Group>
 
+                {/* Charge */}
                 <Form.Group className='mb-4 mt-2'>
                   <Form.Label>Charge</Form.Label>
                   <Form.Control
@@ -125,9 +157,7 @@ function CourtReg() {
                     size='ml'
                     type='number'
                     value={registerData.cost}
-                    onChange={(e) =>
-                      setRegisterData({ ...registerData, cost: e.target.value })
-                    }
+                    onChange={(e) => handleChange('cost', e.target.value)}
                     className='border-dark'
                   />
                   {formErrors.cost && (
@@ -135,6 +165,7 @@ function CourtReg() {
                   )}
                 </Form.Group>
 
+                {/* ... Your existing Form.Group for image upload ... */}
                 <Form.Group className='mb-4 mt-2 border-dark'>
                   <Form.Label>Upload your court image</Form.Label>
                   <Form.Control
@@ -144,17 +175,29 @@ function CourtReg() {
                     onChange={imageUpload}
                     className='border-dark'
                   />
-                  <Button className='btn-primary mt-3 ' style={{ marginLeft: '110px' }} onClick={handleRegister}>
+                  {courtpic && (
+                    <div className='text-success mt-2'>
+                      Image uploaded: {courtpic.file.name}
+                    </div>
+                  )}
+                </Form.Group>
+
+                {/* Register Button */}
+                <Form.Group className='mb-4 mt-2 border-dark'>
+                  <Button
+                    className='btn-primary mt-3'
+                    style={{ marginLeft: '110px' }}
+                    onClick={handleRegister}
+                  >
                     Register
                   </Button>
                 </Form.Group>
-
-
               </Form>
             </Card.Body>
           </Col>
         </Card>
       </Container>
+      <Footer/>
     </>
   );
 }

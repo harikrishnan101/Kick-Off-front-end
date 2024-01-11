@@ -1,17 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { BASEURL } from '../Constant/baseUrl';
+import { useNavigate } from 'react-router-dom';
 
-function Cards() {
+function Cards({data}) {
+  
+  const navigate=useNavigate()
   return (
-    <Card style={{ width: '18rem' }} >
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '18rem' }} onClick={() => navigate(`/courtBooking/${data._id}`)} >
+      <Card.Img variant="top" src={`${BASEURL}/venderCourts/${data?.image}`}   style={{ height: '200px', objectFit: 'cover' }}  />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{data?.name}</Card.Title>
+        <Card.Title>{data?.location}</Card.Title>
+        
       </Card.Body>
     </Card>
   );

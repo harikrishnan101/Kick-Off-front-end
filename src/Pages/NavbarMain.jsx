@@ -21,7 +21,7 @@ function Navbarmain() {
     <Navbar expand="lg" className="navbar">
       <Container className="mt-4">
         <Navbar.Brand href="#" className="text-white">
-          BookMyCourt
+         <h1>Kick-Off</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

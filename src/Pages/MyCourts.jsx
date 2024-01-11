@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbarmain from './NavbarMain'
 import MyCourtComponents from '../Components/MyCourtComponents'
+import Footer from './Footer'
 
 
 function MyCourts() {
@@ -23,6 +24,7 @@ function MyCourts() {
       </div>
         
     </div>
+    <Footer/>
     </>
   )
 }
