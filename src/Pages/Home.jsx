@@ -3,17 +3,18 @@ import NavbarMain from './NavbarMain'
 import Cards from '../Components/Cards'
 import AxiosInstance from '../Configure/AxiosInstance'
 import Footer from './Footer'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Home() {
 
   const[courtData,setcourtData]=useState([])
-
+const {searchText}=useSelector((state)=>state.user)
   useEffect(()=>{
 getAllCourtData()
-  },[])
+  },[searchText])
 
   const getAllCourtData=()=>{
-    AxiosInstance.get('users/getAllCourtData').then((res)=>{
+    AxiosInstance.get('users/getAllCourtData',{params:{searchText:searchText ?? null}}).then((res)=>{
 setcourtData(res?.data?.court)
     })
   }

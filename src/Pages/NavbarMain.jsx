@@ -4,13 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../Styles/Navbar.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { setsearchText } from '../Toolkit/userSlice';
 
 function Navbarmain() {
   const navigate=useNavigate()
   const { user } = useSelector((state) => state.user);
-  console.log(user,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+const dispatch=useDispatch()
   const logout=()=>{
     localStorage.clear('token')
     navigate('/')
@@ -40,6 +41,10 @@ function Navbarmain() {
             <Link to="/MyCourts" className="nav-link text-white">
               My Courts
             </Link>
+            <Link to="/MyBookings" className="nav-link text-white">
+            MyBookings
+            </Link>
+            <input className='rounded-3 mx-3 mt-2' onChange={(e)=>dispatch(setsearchText(e.target.value))}/>
           </Nav>
           <NavDropdown className="text-white" title={`${user.firstname} ${user.lastname}`}  id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3" className="mr-5">

@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const INITIAL_STATE = {
-    user:JSON.parse(localStorage.getItem('user')) || {}
+    user:JSON.parse(localStorage.getItem('user')) || {},
+    searchText:'',
     
 }
 const generalSlice = createSlice({
@@ -14,9 +15,12 @@ const generalSlice = createSlice({
       setuser:(state,action)=>{
         state.user=action.payload
         localStorage.setItem("user",JSON.stringify(action.payload))
-      }  
+      },  
+      setsearchText:(state,action)=>{
+        state.searchText=action.payload  
+      }
     },
 });
 
-export const { setuser} = generalSlice.actions;
+export const { setuser,setsearchText} = generalSlice.actions;
 export default generalSlice.reducer;

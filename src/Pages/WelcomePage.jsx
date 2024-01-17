@@ -17,8 +17,8 @@ function WelcomePage() {
       
 {/* {ShowLoginPage?<LoginPage setShowLoginPage={setShowLoginPage}/>:<SignupPage/>}  */}
 
-
- {ShowLoginPage==='login' && <LoginPage setShowLoginPage={setShowLoginPage}/>}
+<div className=''>{ShowLoginPage==='login' && <LoginPage setShowLoginPage={setShowLoginPage}/>}</div>
+ 
 
  {ShowLoginPage==='signup' && <SignupPage setShowLoginPage={setShowLoginPage}/>}
 

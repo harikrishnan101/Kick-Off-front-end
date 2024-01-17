@@ -1,6 +1,24 @@
 .home{
-    background-color: rgb(189, 50, 124);
+    background-color: rgb(12, 18, 61)
   }
   /* .home{
     background-color: #afb50c;
   } */
+
+
+  /* WelcomePage.css */
+
+.home {
+  background-color:rgb(12, 18, 61)/* Set a background color */
+}
+
+.login-container {
+  max-width: 400px; /* Set a maximum width for the login container */
+  padding: 90px;
+  background-color: #ffffff; /* Set a background color for the login container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  border-radius: 8px; /* Add border radius for a rounded appearance */
+}
+
+/* Customize other styles as needed */
+

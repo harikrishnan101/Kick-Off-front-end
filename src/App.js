@@ -10,6 +10,7 @@ import MyCourts from "./Pages/MyCourts";
 import SingleCourtPage from "./Pages/SingleCourtPage";
 import UserCourtPage from "./Pages/UserCourtPage";
 import { Authorization, LoginpageAuth } from "./Authorization/Authorization";
+import MyBookings from "./Pages/MyBookings";
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <Route path="/MyCourts" element={<MyCourts />} />
           <Route path="/openCourtEdit/:id" element={<SingleCourtPage />} />
           <Route path="/courtBooking/:id" element={<UserCourtPage />} />
+          <Route path="/MyBookings" element={<MyBookings/>} />
+          
 
 
           </Route>

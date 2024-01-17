@@ -10,7 +10,6 @@ function CourtReg() {
   const initialFormData = {
     name: '',
     location: '',
-    cost: 0,
     userId: '',
   };
 
@@ -150,20 +149,7 @@ function CourtReg() {
                 </Form.Group>
 
                 {/* Charge */}
-                <Form.Group className='mb-4 mt-2'>
-                  <Form.Label>Charge</Form.Label>
-                  <Form.Control
-                    placeholder='Eg: 1000'
-                    size='ml'
-                    type='number'
-                    value={registerData.cost}
-                    onChange={(e) => handleChange('cost', e.target.value)}
-                    className='border-dark'
-                  />
-                  {formErrors.cost && (
-                    <div className='text-danger'>{formErrors.cost}</div>
-                  )}
-                </Form.Group>
+                
 
                 {/* ... Your existing Form.Group for image upload ... */}
                 <Form.Group className='mb-4 mt-2 border-dark'>

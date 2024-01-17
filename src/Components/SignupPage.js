@@ -20,7 +20,7 @@ function SignupPage({ setShowLoginPage }) {
   });
 
   useEffect(() => {
-    console.log(login);
+    // console.log(login);
   }, [login]);
 
   const validateForm = () => {
