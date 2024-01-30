@@ -21,6 +21,8 @@ function Timetable({ data }) {
         endDate: "",
         cost: ""
     })
+
+    const[tableData,settableData]=useState([])
     useEffect(() => {
         try {
             AxiosInstance.get('/users/getLatestUpdateDate', {params:{courtId:id}}).then((res) => {
@@ -34,6 +36,15 @@ function Timetable({ data }) {
         } catch (error) {
             
         }
+      },[])
+
+
+      useEffect(() => {
+            AxiosInstance.get('/users/getCourtTimeData', {params:{courtId:id}}).then((res) => {
+                
+                settableData(res.data)
+                
+            })
       },[])
 
       useEffect(() => {
@@ -102,30 +113,30 @@ function Timetable({ data }) {
             <Table striped className='w-100'>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Sl No</th>
+                        <th>Date</th>
+                        <th>slots</th>
+
                     </tr>
                 </thead>
+
+                {tableData.map((data,index) => (
+    <tr key={data._id}>
+        <td>{index+1}</td>
+        <td>{data._id}</td>
+        
+        {data?.slotsData?.map((element)=>
+        <span className='bg-warning border-2 mx-2 rounded-1'>{element.slot.name}</span>
+        )}
+
+        <span className='bg-primary border-2 rounded-1 '>Add +</span>
+        <td></td>
+
+    </tr>
+))}
+
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td colSpan={2}>Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+
                 </tbody>
             </Table>
             <Courtmodal openModal={openModal} setOpenModal={setOpenModal}>

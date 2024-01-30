@@ -40,7 +40,7 @@ setcourtData(res?.data?.court)
       </div>
         
     </div>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

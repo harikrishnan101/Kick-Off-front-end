@@ -148,7 +148,7 @@ function CourtReg() {
                   )}
                 </Form.Group>
 
-                {/* Charge */}
+                {/* Charge */}    
                 
 
                 {/* ... Your existing Form.Group for image upload ... */}

@@ -41,9 +41,11 @@ const dispatch=useDispatch()
             <Link to="/MyCourts" className="nav-link text-white">
               My Courts
             </Link>
+            {user.role === 2 && (
             <Link to="/MyBookings" className="nav-link text-white">
             MyBookings
             </Link>
+            )}
             <input className='rounded-3 mx-3 mt-2' onChange={(e)=>dispatch(setsearchText(e.target.value))}/>
           </Nav>
           <NavDropdown className="text-white" title={`${user.firstname} ${user.lastname}`}  id="navbarScrollingDropdown">

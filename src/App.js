@@ -22,7 +22,7 @@ function App() {
           <Route element={<LoginpageAuth />}>
             <Route path="/" element={<WelcomePage />} />
           </Route>
-          <Route element={<Authorization/>}>
+          {/* <Route element={<Authorization/>}> */}
           <Route path="/home" element={<Home />} />
           <Route path="/CourtRegistration" element={<CourtReg />} />
           <Route path="/MyCourts" element={<MyCourts />} />
@@ -32,7 +32,7 @@ function App() {
           
 
 
-          </Route>
+          {/* </Route> */}
         </Routes>
 
       </BrowserRouter>

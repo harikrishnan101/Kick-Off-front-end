@@ -91,15 +91,19 @@ export const TIMINGS =[
         name:'8pm  - 9pm',
         id:20
     },
-
     {
-        name:'10pm  - 11pm',
+        name:'9pm  - 10pm',
         id:21
     },
 
     {
-        name:'11pm  -12am',
+        name:'10pm  - 11pm',
         id:22
+    },
+
+    {
+        name:'11pm  -12am',
+        id:23
     },
 
 
