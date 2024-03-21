@@ -148,8 +148,8 @@ function CourtReg() {
                   )}
                 </Form.Group>
 
-                {/* Charge */}    
-                
+                {/* Charge */}
+
 
                 {/* ... Your existing Form.Group for image upload ... */}
                 <Form.Group className='mb-4 mt-2 border-dark'>
@@ -183,7 +183,7 @@ function CourtReg() {
           </Col>
         </Card>
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }

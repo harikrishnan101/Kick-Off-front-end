@@ -138,17 +138,17 @@ function TimeSlot({ slot }) {
             <br />
             <label htmlFor='' className='me-5'>
               Time: {slot?.slot.name}
-            </label>
+            </label> 
             <br />
             <label htmlFor='' className='me-5'>
-              Amount: {slot?.courts.cost}
+              Amount: {slot?.cost}
             </label>
           </div>
         </div>
 
         <div className="text-center">
           <button type="button" className="btn btn-primary mt-2" onClick={displayRazorpay}>
-            Primary
+            Pay
           </button>
         </div>
       </Courtmodal>

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {  MDBCard, MDBCardBody, MDBInput, MDBContainer } from 'mdb-react-ui-kit';
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function SignupPage({ setShowLoginPage }) {
   const [login, setlogin] = useState({
     firstname: '',
@@ -20,7 +23,7 @@ function SignupPage({ setShowLoginPage }) {
   });
 
   useEffect(() => {
-    // console.log(login);
+    
   }, [login]);
 
   const validateForm = () => {
@@ -77,7 +80,7 @@ function SignupPage({ setShowLoginPage }) {
           alert('Sign up successfully');
           setShowLoginPage('login');
         } else {
-          alert('Sign up failed');
+          toast.fail('Sign up failed');
         }
       });
     }
