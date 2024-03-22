@@ -56,7 +56,7 @@
               <NavDropdown.Item href="#action3" className="mr-5">
               {`${user.firstname} ${user.lastname}`}
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={logout}>logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Navbar.Collapse>
         </Container>
