@@ -75,20 +75,26 @@ function SignupPage({ setShowLoginPage }) {
 
   const handlesignup = () => {
     if (validateForm()) {
-      axios.post('http://localhost:4000/auth/register',login).then((res) => {
-        if (res.data.signUp) {
-          alert('Sign up successfully');
-          setShowLoginPage('login');
-        } else {
-          toast.fail('Sign up failed');
-        }
-      }).catch((error) => {
-        // Handle other errors (e.g., network errors, server errors)
-        console.error('Sign up failed:', error);
-        alert('This email is already registered');
-      });
+      axios.post('http://localhost:4000/auth/register', login)
+        .then((response) => {
+          if (response.data.signUp) {
+            alert('Sign up successful');
+            setShowLoginPage('login');
+          } else {
+            toast.fail('Sign up failed');
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 400) {
+            alert('This email is already registered');
+          } else {
+            console.error('Sign up failed:', error);
+            alert('An error occurred during sign up');
+          }
+        });
     }
   };
+  
   
 
   return (
