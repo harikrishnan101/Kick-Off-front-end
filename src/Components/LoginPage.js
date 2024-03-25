@@ -29,33 +29,33 @@ function LoginPage({ setShowLoginPage }) {
 
   const dispatch=useDispatch()
 
-  const handleLogin = () => {
-    // Client-side validation
+  const handleLogin = async () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-
+  
     const emailValid = emailRegex.test(login.email);
     const passwordValid = passwordRegex.test(login.password);
-
+  
     if (!emailValid || !passwordValid) {
       setMessage('Invalid email or password. Please check your input.');
       return;
     }
-
+  
     try {
-      axios.post('http://localhost:4000/auth/login', login).then((response) => {
-        if (response.data.login) {
-          localStorage.setItem('token', response?.data?.token);
-          dispatch(setuser(response?.data?.user))
-          navigate('/home');
-        } else {
-          alert('Login failed');
-        }
-      });
+      const response = await axios.post('http://localhost:4000/auth/login', login);
+      if (response.data.login) {
+        localStorage.setItem('token', response?.data?.token);
+        dispatch(setuser(response?.data?.user));
+        navigate('/home');
+      } else {
+        setMessage('Login failed. Please check your credentials.');
+      }
     } catch (error) {
-      // Handle error
+      setMessage('Login failed. Please check your credentials.');
+      console.error('Login error:', error);
     }
   };
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

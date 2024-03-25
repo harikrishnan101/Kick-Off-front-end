@@ -8,7 +8,7 @@ import TimeSlot from './TimeSlot';
 function UserCourtPage() {
   const { id } = useParams();
   const [courtData, setCourtData] = useState();
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Initializing selectedDate with today's date
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); 
   const [timeSchedules, setTimeSchedules] = useState([]);
 
   const getSlotData = () => {
@@ -23,9 +23,9 @@ function UserCourtPage() {
         currentHour: currentHour
       }
     }).then((resp) => {
-      console.log(resp);
-      // Assuming resp.data is an array, update setTimeSchedules with the array data
-      setTimeSchedules(resp.data); // Assuming the response data is an array
+      
+      
+      setTimeSchedules(resp.data); 
     }).catch((error) => {
       console.error("Error fetching data:", error);
     });

@@ -19,7 +19,7 @@ function CourtReg() {
   const navigate = useNavigate();
 
   const imageUpload = (e) => {
-    console.log(e.target.files[0]);
+    
     setCourtpic({ file: e.target.files[0] });
   };
 
