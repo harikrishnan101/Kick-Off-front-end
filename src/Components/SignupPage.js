@@ -82,10 +82,6 @@ function SignupPage({ setShowLoginPage }) {
         } else {
           toast.fail('Sign up failed');
         }
-      }).catch((error) => {
-        // Handle other errors (e.g., network errors, server errors)
-        console.error('Sign up failed:', error);
-        alert('This email is already registered');
       });
     }
   };
