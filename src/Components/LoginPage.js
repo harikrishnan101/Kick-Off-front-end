@@ -42,7 +42,7 @@ function LoginPage({ setShowLoginPage }) {
     }
   
     try {
-      const response = await axios.post('https://kick-off-api.onrender.com', login);
+      const response = await axios.post('https://kick-off-api.onrender.com/auth/login', login);
       if (response?.data?.login) {
         localStorage.setItem('token', response?.data?.token);
         dispatch(setuser(response?.data?.user));
