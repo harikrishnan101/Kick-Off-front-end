@@ -23,32 +23,11 @@ function CourtReg() {
     setCourtpic({ file: e.target.files[0] });
   };
 
-  const validateField = (fieldName, value) => {
-    let errorMessage = '';
-
-    switch (fieldName) {
-      case 'name':
-        // Alphanumeric and space validation
-        errorMessage = /^[A-Za-z\s]+$/.test(value) ? '' : 'Invalid Court Name';
-        break;
-      case 'location':
-        // Alphanumeric and space validation
-        errorMessage = /^[A-Za-z\s]+$/.test(value) ? '' : 'Invalid Location';
-        break;
-      case 'cost':
-        // Numeric validation
-        errorMessage = /^\d+$/.test(value) ? '' : 'Invalid Cost';
-        break;
-      default:
-        break;
-    }
-
-    setFormErrors({ ...formErrors, [fieldName]: errorMessage });
-  };
+  
 
   const handleChange = (fieldName, value) => {
     setRegisterData({ ...registerData, [fieldName]: value });
-    validateField(fieldName, value);
+    
   };
 
   const handleRegister = () => {
