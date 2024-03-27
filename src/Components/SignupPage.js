@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AxiosInstance from '../Configure/AxiosInstance';
 
 function SignupPage({ setShowLoginPage }) {
   const [login, setlogin] = useState({
@@ -75,7 +76,7 @@ function SignupPage({ setShowLoginPage }) {
 
   const handlesignup = () => {
     if (validateForm()) {
-      axios.post('https://kick-off-api.onrender.com/auth/register', login)
+      AxiosInstance.post('/auth/register', login)
         .then((response) => {
           if (response.data.signUp) {
             alert('Sign up successful');
