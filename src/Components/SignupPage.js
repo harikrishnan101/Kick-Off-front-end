@@ -75,7 +75,7 @@ function SignupPage({ setShowLoginPage }) {
 
   const handlesignup = () => {
     if (validateForm()) {
-      axios.post('http://localhost:4000/auth/register', login)
+      axios.post('https://kick-off-api.onrender.com/auth/register', login)
         .then((response) => {
           if (response.data.signUp) {
             alert('Sign up successful');
