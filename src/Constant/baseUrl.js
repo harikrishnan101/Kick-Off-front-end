@@ -1,4 +1,4 @@
-export const BASEURL = 'http://localhost:4000'
+export const BASEURL = 'https://kick-off-api.onrender.com'
 
 
 export const TIMINGS =[ 
