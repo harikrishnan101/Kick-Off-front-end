@@ -13,7 +13,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { setuser } from '../Toolkit/userSlice';
 import { useDispatch } from 'react-redux';
-import AxiosInstance from '../Configure/AxiosInstance';
 
 
 
@@ -43,7 +42,7 @@ function LoginPage({ setShowLoginPage }) {
     }
   
     try {
-      const response = await AxiosInstance.post('/auth/login', login);
+      const response = await axio.post('https://kick-off-api.onrender.com/auth/login', login);
       if (response?.data?.login) {
         localStorage.setItem('token', response?.data?.token);
         dispatch(setuser(response?.data?.user));
