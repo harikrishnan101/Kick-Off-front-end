@@ -49,11 +49,16 @@ function LoginPage({ setShowLoginPage }) {
         navigate('/home');
       } else {
         setMessage('Login failed. Please check your credentials.');
-      }
+      } 
     } catch (error) {
-       setMessage('Login failed. Please check your credentials.');
-      console.error('Login error:', error);
+      try {
+        setMessage('Login failed. Please check your credentials.');
+        console.error('Login error:', error);
+      } catch (err) {
+        console.log("Login failed."); // Handle additional error here
+      }
     }
+    
   };
 
 
