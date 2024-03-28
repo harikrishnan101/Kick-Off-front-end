@@ -23,8 +23,8 @@ function LoginPage({ setShowLoginPage }) {
     password: '',
   });
 
-  const [message, setMessage] = useState(''); 
-  const [showPassword, setShowPassword] = useState(false); 
+  const [message, setMessage] = useState(''); // State to store messages
+  const [showPassword, setShowPassword] = useState(false); // State to control password visibility
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
@@ -51,27 +51,10 @@ function LoginPage({ setShowLoginPage }) {
         setMessage('Login failed. Please check your credentials.');
       }
     } catch (error) {
-      if (error.response) {
-        
-        if (error.response.status === 403 || error.response.status === 404) {
-          
-          setMessage('Login failed. Please check your credentials.');
-        } else {
-         
-          console.error('Server responded with error:', error.response.data);
-          setMessage('Login failed. Please try again later.');
-        }
-      } else if (error.request) {
-        
-        console.error('No response received:', error.request);
-        setMessage('Login failed. Please try again later.');
-      } else {
-        
-        console.error('Error during request setup:', error.message);
-        setMessage('Login failed. Please try again later.');
-      }
+       setMessage('Login failed. Please check your credentials.');
+      console.error('Login error:', error);
     }
-    
+  };
 
 
   const togglePasswordVisibility = () => {
@@ -123,7 +106,6 @@ function LoginPage({ setShowLoginPage }) {
       </MDBRow>
     </MDBContainer>
   );
-  }
 }
 
 export default LoginPage;
