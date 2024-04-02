@@ -51,14 +51,9 @@ function LoginPage({ setShowLoginPage }) {
         setMessage('Login failed. Please check your credentials.');
       } 
     } catch (error) {
-      try {
-        setMessage('Login failed. Please check your credentials.');
-        console.error('Login error:', error);
-      } catch (err) {
-        console.log("Login failed."); // Handle additional error here
-      }
+       setMessage('Login failed. Please check your credentials.');
+      console.error('Login error:', error);
     }
-    
   };
 
 
