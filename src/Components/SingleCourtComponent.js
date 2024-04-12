@@ -31,7 +31,7 @@ function SingleCourtComponent({setcourtData}) {
         <>
           <img
             className='SingleCourtimage'
-            src={`${BASEURL}/venderCourts/${singleCourt.image}`}
+            src={`${BASEURL}/CourtsImg/${singleCourt.image}`}
             alt=''
           />
           <h3 className='court-name'>{singleCourt.name}</h3>
