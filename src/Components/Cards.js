@@ -8,10 +8,11 @@ function Cards({ data }) {
 
   return (
     <Card style={{ width: '18rem' }} onClick={() => navigate(`/courtBooking/${data._id}`)}>
-      <Card.Img
+      <img
         variant="top"
         src={`${BASEURL}/CourtsImg/${data?.image}`} // Assuming the images are stored in the 'CourtsImg' directory
-        style={{ height: '200px', objectFit: 'cover' }}
+        style={{ height: '200px', objectFit: 'cover', width: '100%' }} // Add width: '100%' to ensure the image fills the card width
+        alt={data.name} // Provide an alt attribute for accessibility
       />
       <Card.Body>
         <Card.Title>{data?.name}</Card.Title>
