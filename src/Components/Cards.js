@@ -8,10 +8,11 @@ function Cards({ data }) {
 
   return (
     <Card style={{ width: '18rem' }} onClick={() => navigate(`/courtBooking/${data._id}`)}>
-     <img
-  src={`${BASEURL}/CourtsImg/${data?.image}`} // Assuming the images are stored in the 'CourtsImg' directory
-  style={{ height: '200px', objectFit: 'cover' }}
-/>
+      <img
+        src={`${BASEURL}/CourtsImg/${data?.image}`} // Assuming the images are stored in the 'CourtsImg' directory
+        style={{ height: '200px', objectFit: 'cover' }}
+        alt={data?.name} // Providing alt text for accessibility
+      />
 
       <Card.Body>
         <Card.Title>{data?.name}</Card.Title>
