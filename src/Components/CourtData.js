@@ -12,7 +12,7 @@ function CourtData({data}) {
   return (
     <>
       <Card style={{ width:'18rem'}} onClick={()=>openCourt()}>
-        <Card.Img
+        <img
           variant="top"
           src={`${BASEURL}/CourtsImg/${data?.image}`}
           style={{ width: '100%', height: '200px', objectFit: 'cover' }}

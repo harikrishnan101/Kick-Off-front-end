@@ -14,7 +14,7 @@ const BookingCard = () => {
   return (
     <div className="container mt-5">
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Card image" />
+        <img variant="top" src="https://via.placeholder.com/150" alt="Card image" />
         <Card.Body>
           <Card.Title></Card.Title>
           <Card.Text>

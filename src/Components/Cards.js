@@ -8,11 +8,10 @@ function Cards({ data }) {
 
   return (
     <Card style={{ width: '18rem' }} onClick={() => navigate(`/courtBooking/${data._id}`)}>
-      <Card.Img
+      <img
         variant="top"
-        src={`${BASEURL}/CourtsImg/${data?.image}`}
+        src={`${BASEURL}/CourtsImg/${data?.image}`} 
         style={{ height: '200px', objectFit: 'cover' }}
-        crossorigin="anonymous" // Add crossorigin attribute
       />
       <Card.Body>
         <Card.Title>{data?.name}</Card.Title>
